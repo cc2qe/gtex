@@ -149,22 +149,22 @@ def ld_continuous(vcf_in, var_list, samp_set, field, alg, index_var, labels, col
                         ld = R[i][j]
                     elif alg == 'r2':
                         ld = R[i][j] **2
-                    print '\t'.join(map(str, (var_list[i], var_list[j], ld)))
+                    print('\t'.join(map(str, (var_list[i], var_list[j], ld))))
 
         # in matrix format
         else:
             if labels:
-                print '\t' + '\t'.join(var_list)
+                print('\t' + '\t'.join(var_list))
             if alg == 'r':
                 for i in xrange(len(R)):
                     if labels:
                         sys.stdout.write(var_list[i] + '\t')
-                    print '\t'.join(['%0.6g' % x for x in R[i]])
+                    print('\t'.join(['%0.6g' % x for x in R[i]]))
             elif alg == 'r2':
                 for i in xrange(len(R)):
                     if labels:
                         sys.stdout.write(var_list[i] + '\t')
-                    print '\t'.join(['%0.6g' % x ** 2 for x in R[i]])
+                    print('\t'.join(['%0.6g' % x ** 2 for x in R[i]]))
 
     # test against a single variant
     else:
@@ -187,7 +187,7 @@ def ld_continuous(vcf_in, var_list, samp_set, field, alg, index_var, labels, col
             elif alg == 'r2':
                 value = R_index_var[j] ** 2
 
-            print "%s\t%s\t%0.6g" % (var_list[j], index_var, value)
+            print("%s\t%s\t%0.6g" % (var_list[j], index_var, value))
 
     return
 
@@ -229,6 +229,6 @@ def main():
 if __name__ == '__main__':
     try:
         sys.exit(main())
-    except IOError, e:
+    except IOError as e:
         if e.errno != 32:  # ignore SIGPIPE
             raise 
